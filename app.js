@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 
 const app = express();
 
@@ -11,11 +12,12 @@ const shopRoute = require("./routes/shop");
 // registra um middleware para parsear o body request
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(adminRoute);
+// string argument: filter '/admin' for admin routes
+app.use("/admin", adminRoute);
 app.use(shopRoute);
 
 // adicionando um "notfound" handler middleware
 app.use((req, res) => {
-  res.status(404).send("<h1>Page not found</h1>");
+  res.status(404).sendFile(path.join(__dirname, "views", "not-found.html"));
 });
 app.listen(3001);
