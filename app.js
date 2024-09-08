@@ -1,25 +1,21 @@
-// const http = require("http");
-
 const express = require("express");
 
 const app = express();
 
-// Função que irá executar em toda request recebida
-// next é uma função que será passada posteriomente (próximo middleware)
-app.use((req, res, nextMid) => {
-  console.log("in the middleware");
-  nextMid();
+app.use("/add-product", (req, res, nextMid) => {
+  // Sem chamar o nextMiddleware Fn, eu nunca executo o próximo middleware
+  // exceto se caso meu path seja de fato diferente de /add-product
+  console.log("Estou na página de adicionar produto");
+  res.send("<h1>Bem vindo à página de adição de produtos</h1>");
 });
 
-app.use((req, res, nextMid) => {
-  console.log("in the other middleware");
-  // enviando respostas você acaba a chain de middlewares
-  // express response treatment
-  res.send("<h1>Hello from express</h1>");
+app.use("/", (req, res) => {
+  // o console irá disparar independentemente da ausência de um next()
+  // no middleware anterior, por questão de como a fn .use funciona
+  // capturando todos os comportamentos de rota
+  console.log("Estou na página padrão");
+
+  res.send("<h1>Olá, bem vindo à minha página padrão.</h1>");
 });
 
 app.listen(3001);
-// Ambas as funções a seguir são substituidas pelo método .listen(port)
-// do Express
-// const server = http.createServer(app);
-// server.listen(3001);
