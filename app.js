@@ -1,9 +1,9 @@
 const http = require("http");
-const requestHandler = require("./routes");
 
-// event driven architecture
-// e.g. => Se A acontecer, então por favor, execute B
-const server = http.createServer(requestHandler);
+const express = require("express");
 
-// Sempre que existirem event listeners, node JS vai manter o eventloop ativo e esperar (infinitamente)
+const app = express();
+
+const server = http.createServer(app);
+
 server.listen(3001);
