@@ -1,25 +1,27 @@
-// const http = require("http");
-
 const express = require("express");
+const path = require("path");
 
 const app = express();
 
-// Função que irá executar em toda request recebida
-// next é uma função que será passada posteriomente (próximo middleware)
-app.use((req, res, nextMid) => {
-  console.log("in the middleware");
-  nextMid();
-});
+//add body-parser dep.
+const bodyParser = require("body-parser");
 
-app.use((req, res, nextMid) => {
-  console.log("in the other middleware");
-  // enviando respostas você acaba a chain de middlewares
-  // express response treatment
-  res.send("<h1>Hello from express</h1>");
-});
+const adminRoute = require("./routes/admin");
+const shopRoute = require("./routes/shop");
 
+// registra um middleware para parsear o body request
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// registrando arquivos estáticos (tipo css) [read only]
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "scripts")));
+
+// string argument: filter '/admin' for admin routes
+app.use("/admin", adminRoute);
+app.use(shopRoute);
+
+// adicionando um "notfound" handler middleware
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(__dirname, "views", "not-found.html"));
+});
 app.listen(3001);
-// Ambas as funções a seguir são substituidas pelo método .listen(port)
-// do Express
-// const server = http.createServer(app);
-// server.listen(3001);
