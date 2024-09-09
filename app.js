@@ -12,6 +12,10 @@ const shopRoute = require("./routes/shop");
 // registra um middleware para parsear o body request
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// registrando arquivos estáticos (tipo css) [read only]
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "scripts")));
+
 // string argument: filter '/admin' for admin routes
 app.use("/admin", adminRoute);
 app.use(shopRoute);
