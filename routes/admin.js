@@ -6,7 +6,10 @@ const products = [];
 
 // /admin/add-product >> METHOD : GET
 router.get("/add-product", (req, res) => {
-  res.render("add-product");
+  res.render("add-product", {
+    path: "/admin/add-product",
+    pageTitle: "Add products",
+  });
 });
 
 // /admin/add-product >> METHOD : POST

@@ -1,12 +1,7 @@
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Not found
-        link(rel="stylesheet", href="/css/main.css")
-    body 
-        main
+extends layouts/main-layout.pug 
+
+block content
+     main
             h1 Sorry, this page actually doesn't exist
             p You may want to go back to the main page?
             a.link(href="/") Main Page
