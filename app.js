@@ -26,6 +26,6 @@ app.use(shopRoute);
 
 // adicionando um "notfound" handler middleware
 app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, "views", "not-found.html"));
+  res.status(404).render("404");
 });
 app.listen(3001);

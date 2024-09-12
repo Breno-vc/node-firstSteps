@@ -62,3 +62,8 @@ main {
   border: 1px solid #dbc441;
   color: #dbc441;
 }
+.link {
+  text-decoration: none;
+  font-weight: 700;
+  color: inherit;
+}
