@@ -10,7 +10,7 @@ app.set("views", "views");
 //add body-parser dep.
 const bodyParser = require("body-parser");
 
-const adminData = require("./routes/admin");
+const adminRoutes = require("./routes/admin");
 const shopRoute = require("./routes/shop");
 
 // registra um middleware para parsear o body request
@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "scripts")));
 
 // string argument: filter '/admin' for admin routes
-app.use("/admin", adminData.routes);
+app.use("/admin", adminRoutes);
 app.use(shopRoute);
 
 // adicionando um "notfound" handler middleware
