@@ -12,6 +12,7 @@ const bodyParser = require("body-parser");
 
 const adminRoutes = require("./routes/admin");
 const shopRoute = require("./routes/shop");
+const notFoundRoute = require("./controllers/not-found");
 
 // registra um middleware para parsear o body request
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -25,7 +26,5 @@ app.use("/admin", adminRoutes);
 app.use(shopRoute);
 
 // adicionando um "notfound" handler middleware
-app.use((req, res) => {
-  res.status(404).render("404", { pageTitle: "Page not found" });
-});
+app.use(notFoundRoute.get404);
 app.listen(3001);
