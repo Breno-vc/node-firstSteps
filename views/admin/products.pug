@@ -1,1 +1,22 @@
 extends ../layouts/main-layout.pug
+
+block content 
+    main 
+        if products.length
+            .grid 
+                each product in products
+                        article.card.product-item
+                            header.card__header
+                                h1.product__title #{product.title}
+                            .card__image
+                                img(src=product.imgUrl, alt="Book")
+                            .card__content
+                                h2.product__price #{product.price}
+                                p.product__description #{product.description}
+                            .card__actions
+                                a(href='/admin/edit-product').btn Edit
+                                form(action="/admin/delete-product" method="POST") 
+                                    button(type="submit").btn Delete
+
+        else   
+                h1 No Products yet.

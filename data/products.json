@@ -1,1 +1,8 @@
-[{"title":"123"},{"title":"123"},{"title":"123"},{"title":"Novo livro"}]
+[
+  {
+    "title": "Bicicleta Speed",
+    "imgUrl": "https://media.gettyimages.com/id/171586627/pt/foto/bicicleta-com-pleno-tra%C3%A7ado-de-recorte.jpg?s=612x612&w=0&k=20&c=DtJAKAIGX8huEAaq8HYDo7q9UHPxET68tRUPTl2ErK8=",
+    "description": "Bicicleta Speed extremamente leve e veloz!",
+    "price": "2860"
+  }
+]

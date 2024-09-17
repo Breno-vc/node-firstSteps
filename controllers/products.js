@@ -8,9 +8,12 @@ exports.getAddProduct = (req, res) => {
 };
 
 exports.getAdminProduct = (req, res) => {
-  res.render("admin/products", {
-    pageTitle: "Admin Products Management",
-    path: "/admin/products",
+  Product.fetchAll((products) => {
+    res.render("admin/products", {
+      products: products,
+      pageTitle: "Admin Products Management",
+      path: "/admin/products",
+    });
   });
 };
 
@@ -22,7 +25,14 @@ exports.getEditProduct = (req, res) => {
 };
 
 exports.postAddProduct = (req, res) => {
-  const product = new Product(req.body.title);
+  const { productName, productImgUrl, productDescription, productPrice } =
+    req.body;
+  const product = new Product(
+    productName,
+    productImgUrl,
+    productDescription,
+    productPrice
+  );
   product.save();
   res.redirect("/");
 };
