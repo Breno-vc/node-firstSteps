@@ -1,0 +1,17 @@
+extends ../layouts/main-layout.pug
+
+block content 
+    main
+        form.product-form(action="/admin/add-product" method="POST" id="product-form" )
+            div.form-control
+                input(type="text" placeholder="title" name="productName")
+           
+            div.form-control
+                input(type="url" placeholder="Image URL" name="productImgUrl")
+           
+            div.form-control
+                input(type="text" placeholder="Description" name="productDescription")
+            
+            div.form-control
+                input(type="number" placeholder="Price" name="productPrice")
+            button.submit-btn(type="submit") Add Product
