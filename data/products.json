@@ -1,8 +1,23 @@
 [
   {
+    "productId": "123",
     "title": "Bicicleta Speed",
     "imgUrl": "https://media.gettyimages.com/id/171586627/pt/foto/bicicleta-com-pleno-tra%C3%A7ado-de-recorte.jpg?s=612x612&w=0&k=20&c=DtJAKAIGX8huEAaq8HYDo7q9UHPxET68tRUPTl2ErK8=",
     "description": "Bicicleta Speed extremamente leve e veloz!",
     "price": "2860"
+  },
+  {
+    "title": "Outro produto",
+    "imgUrl": "https://www.gettyimages.pt/fotos/bicicleta",
+    "description": "Produto novo",
+    "price": "999",
+    "productId": "0.4267474188676741"
+  },
+  {
+    "title": "mais um teste",
+    "imgUrl": "https://www.gettyimages.pt/fotos/bicicleta",
+    "description": "teste",
+    "price": "50",
+    "productId": "0.1691634267579052"
   }
 ]
