@@ -48,12 +48,17 @@ exports.getProducts = (req, res) => {
 };
 
 exports.getProduct = (req, res) => {
-  // o nome a partir dos "dois pontos" no arquivo de roteamento, torna-se o nome da prop dos params para o express (router.get("products/:productId") >> productId)
   const productId = req.params.productId;
 
-  Product.findById(productId, (product) => {
-    console.log(product);
+  Product.fetchAll((products) => {
+    Product.findById(productId, (product) => {
+      if (!product) {
+        return res.redirect("/"); // Redireciona caso o produto não exista
+      }
+      res.render("shop/product-detail", {
+        products: products, // Passa a lista de produtos
+        product: product, // Passa o produto específico, se necessário
+      });
+    });
   });
-
-  res.redirect("/");
 };

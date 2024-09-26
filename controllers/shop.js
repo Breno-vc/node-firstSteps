@@ -7,6 +7,12 @@ exports.getCart = (req, res) => {
   });
 };
 
+exports.postCart = (req, res) => {
+  const prodId = req.body.productId;
+  console.log(prodId);
+  res.redirect("/cart");
+};
+
 exports.getCheckoutPage = (req, res) => {
   res.render("shop/checkout", {
     pageTitle: "Checkout Page",
